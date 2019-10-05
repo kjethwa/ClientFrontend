@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavigationbarComponent } from './sidenavigationbar/sidenavigationbar.component';
-import {AllMaterialModule} from './material.module';
+import {AllMaterialModule} from './material/material.module';
+import { SessiondetailsComponent } from './sessiondetails/sessiondetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavigationbarComponent
+    SidenavigationbarComponent,
+    SessiondetailsComponent
   ],
   imports: [
     BrowserModule,
