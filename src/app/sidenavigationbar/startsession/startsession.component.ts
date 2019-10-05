@@ -8,11 +8,11 @@ export interface Tile {
 }
 
 @Component({
-  selector: 'app-sessiondetails',
-  templateUrl: './sessiondetails.component.html',
-  styleUrls: ['./sessiondetails.component.css']
+  selector: 'app-startsession',
+  templateUrl: './startsession.component.html',
+  styleUrls: ['./startsession.component.css']
 })
-export class SessiondetailsComponent implements OnInit {
+export class StartsessionComponent implements OnInit {
 
   tiles: Tile[] = [
     {text: 'One', cols: 2, rows: 2, color: 'lightblue'},

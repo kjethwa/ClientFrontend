@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {SidenavigationbarComponent} from './sidenavigationbar/sidenavigationbar.component';
+import {AppComponent} from './app.component';
 
-const routes: Routes = [{path: '' , component: SidenavigationbarComponent}];
+// tslint:disable-next-line:max-line-length
+const routes: Routes = [{path: 'session' , component: AppComponent, children: [{path: '', loadChildren: './sidenavigationbar/sidenavmodule.module#SidenavmoduleModule'}]}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

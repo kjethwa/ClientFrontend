@@ -4,21 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavigationbarComponent } from './sidenavigationbar/sidenavigationbar.component';
-import {AllMaterialModule} from './material/material.module';
-import { SessiondetailsComponent } from './sessiondetails/sessiondetails.component';
-
+import {SidenavmoduleModule} from './sidenavigationbar/sidenavmodule.module';
 @NgModule({
   declarations: [
-    AppComponent,
-    SidenavigationbarComponent,
-    SessiondetailsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AllMaterialModule
+    SidenavmoduleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
