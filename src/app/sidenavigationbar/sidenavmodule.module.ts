@@ -5,12 +5,14 @@ import {SessiondetailsComponent} from './sessiondetails/sessiondetails.component
 import {CompletesessionComponent} from './completesession/completesession.component';
 import {AllMaterialModule} from '../material/material.module';
 import {RouterModule, Routes} from '@angular/router';
-import { StartsessionComponent } from './startsession/startsession.component';
+import { SessionsComponent } from './sessions/sessions.component';
+import {AdminService} from './admin.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [{
   path: '', component: SidenavigationbarComponent,
   children: [
-    {path: 'start', component: StartsessionComponent},
+    {path: 'start', component: SessionsComponent},
     {path: 'complete', component: CompletesessionComponent},
     {path: 'details', component: SessiondetailsComponent}]
 }];
@@ -19,12 +21,14 @@ const routes: Routes = [{
   declarations: [SidenavigationbarComponent,
   SessiondetailsComponent,
   CompletesessionComponent,
-  StartsessionComponent,
+  SessionsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    AllMaterialModule
-  ]
+    AllMaterialModule,
+    HttpClientModule
+  ],
+  providers: [AdminService]
 })
 export class SidenavmoduleModule { }

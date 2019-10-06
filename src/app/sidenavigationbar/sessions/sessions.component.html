@@ -1,0 +1,49 @@
+<div class="align-component">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{currentSession?.clientName}}</mat-card-title>
+      <mat-card-subtitle>Ophthalmologist</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="4" rowHeight="50px">
+        <mat-grid-tile [colspan]="2" [rowspan]="2" class="app-grid-tile">
+          <div>
+            <span>{{currentSession?.day}}</span>
+            <span>{{currentSession?.date}}</span>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1" class="app-grid-tile">
+          <div>
+            <span>From</span>
+            <span>{{currentSession?.fromTime}}</span>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1" class="app-grid-tile">
+          <div>
+            <span>To</span>
+            <span>{{currentSession?.toTime}}</span>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1" class="app-grid-tile">
+          <div>
+            <span>Available</span>
+            <span>{{currentSession?.availableTokens}}</span>
+          </div>
+          <div>
+            <span>Booked</span>
+            <span>{{currentSession?.bookedTokens}}</span>
+          </div>
+          <div>
+            <span>Submitted</span>
+            <span>{{currentSession?.submittedTokens}}</span>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+    <mat-card-actions align="center">
+      <button mat-raised-button color="accent" (click)="previousSession()">previous</button>
+      <button mat-raised-button color="primary">Start</button>
+      <button mat-raised-button color="accent" (click)="nextSession()">next</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

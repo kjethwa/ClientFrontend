@@ -8,3 +8,11 @@
   width: 90%;
   max-width: 400px;
 }
+
+.app-grid-tile {
+  background-color: lightsteelblue;
+}
+
+.app-grid-tile-content {
+  white-space: pre-line;
+}
