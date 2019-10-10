@@ -21,10 +21,18 @@ export class SessionsComponent implements OnInit {
   ngOnInit() {
     const clientId = 1;
     this.adminService.getSessions(clientId).subscribe(response => {
-      this.availableSession.push(...response);
-      this.currentIndex = 0;
-      this.size = this.availableSession.length;
-      this.currentSession = this.availableSession[this.currentIndex];
+      console.log(response);
+      if (response.status === 'SUCCESS') {
+        this.availableSession.push(...response.message);
+        this.currentIndex = 0;
+        this.size = this.availableSession.length;
+        this.currentSession = this.availableSession[this.currentIndex];
+
+      } else {
+        this.snackBar.open('Session not found', 'INFO', {
+          duration: 2000,
+        });
+      }
     });
   }
 
