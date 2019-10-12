@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AdminService} from '../admin.service';
 import {AdminSessionSummary} from '../models/AdminSessionSummary';
 import {MatSnackBar} from '@angular/material';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-session',
@@ -15,21 +16,20 @@ export class SessionsComponent implements OnInit {
   private currentIndex: number;
   private size: number;
 
-  constructor(private adminService: AdminService, private snackBar: MatSnackBar) {
+  constructor(private adminService: AdminService, private snackBar: MatSnackBar, private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
     const clientId = 1;
     this.adminService.getSessions(clientId).subscribe(response => {
-      console.log(response);
       if (response.status === 'SUCCESS') {
         this.availableSession.push(...response.message);
         this.currentIndex = 0;
         this.size = this.availableSession.length;
         this.currentSession = this.availableSession[this.currentIndex];
-
       } else {
-        this.snackBar.open('Session not found', 'INFO', {
+        this.snackBar.open(response.message, 'ERROR', {
           duration: 2000,
         });
       }
@@ -40,7 +40,7 @@ export class SessionsComponent implements OnInit {
     if (this.currentIndex < this.size - 1) {
       this.currentSession = this.availableSession[++this.currentIndex];
     } else {
-      this.snackBar.open('Session not found', 'INFO',{
+      this.snackBar.open('Session not found', 'INFO', {
         duration: 2000,
       });
     }
@@ -53,6 +53,21 @@ export class SessionsComponent implements OnInit {
       this.snackBar.open('Session not found', 'INFO', {
         duration: 2000,
       });
+    }
+  }
+
+  public startSession(): void {
+    if (this.currentSession != null) {
+      this.router.navigate(['/tokeninfo', this.currentSession.sessionId]);
+      /*this.adminService.startSession(this.currentSession.sessionId).subscribe(response => {
+        if (response.status === 'SUCCESS') {
+          this.router.navigate(['/tokeninfo', this.currentSession.sessionId]);
+        } else {
+          this.snackBar.open(response.message, 'ERROR', {
+            duration: 2000,
+          });
+        }
+      });*/
     }
   }
 }

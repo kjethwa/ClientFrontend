@@ -1,0 +1,18 @@
+.align-component {
+  margin: auto;
+  padding-top: 10px;
+  width: 90%;
+  max-width: 90%;
+  text-align: center;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  font-size: 50px;
+  color: #fff;
+  line-height: 150px;
+  text-align: center;
+  background: midnightblue;
+}

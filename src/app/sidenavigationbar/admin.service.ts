@@ -16,4 +16,15 @@ export class AdminService {
     const url = this.serverURL + '/admin/sessions/' + clientId;
     return this.http.get<ResponseStatus>(url);
   }
+
+  startSession(sessionId) {
+    const url = this.serverURL + '/admin/startsession/' + sessionId;
+    return this.http.get<ResponseStatus>(url);
+  }
+
+  nextToken(sessionId) {
+    const url = this.serverURL + '/admin/nexttoken/' + sessionId;
+    return this.http.get<ResponseStatus>(url);
+  }
+
 }

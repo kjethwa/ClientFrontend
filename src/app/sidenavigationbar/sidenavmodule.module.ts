@@ -8,13 +8,15 @@ import {RouterModule, Routes} from '@angular/router';
 import { SessionsComponent } from './sessions/sessions.component';
 import {AdminService} from './admin.service';
 import {HttpClientModule} from '@angular/common/http';
+import { TokenInfoComponent } from './token-info/token-info.component';
 
 const routes: Routes = [{
   path: '', component: SidenavigationbarComponent,
   children: [
     {path: 'start', component: SessionsComponent},
     {path: 'complete', component: CompletesessionComponent},
-    {path: 'details', component: SessiondetailsComponent}]
+    {path: 'details', component: SessiondetailsComponent},
+    {path: 'tokeninfo/:sessionId', component: TokenInfoComponent}]
 }];
 
 @NgModule({
@@ -22,6 +24,7 @@ const routes: Routes = [{
   SessiondetailsComponent,
   CompletesessionComponent,
   SessionsComponent,
+  TokenInfoComponent,
   ],
   imports: [
     CommonModule,
