@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AdminService} from '../admin.service';
 import {TokenInfo} from '../models/TokenInfo';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-token-info',
@@ -14,7 +15,7 @@ export class TokenInfoComponent implements OnInit {
 
   private tokenInfo: TokenInfo;
 
-  constructor(private route: ActivatedRoute, private adminService: AdminService) {
+  constructor(private route: ActivatedRoute, private adminService: AdminService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -27,11 +28,12 @@ export class TokenInfoComponent implements OnInit {
 
   nextToken() {
     this.adminService.nextToken(this.sessionId).subscribe(response => {
-      console.log(response);
       if (response.status === 'SUCCESS') {
         this.tokenInfo = response.message;
       } else {
-        console.log(response);
+        this.snackBar.open(response.message, 'ERROR', {
+          duration: 2000,
+        });
       }
     });
   }

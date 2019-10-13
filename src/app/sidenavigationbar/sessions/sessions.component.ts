@@ -59,7 +59,6 @@ export class SessionsComponent implements OnInit {
 
   public startSession(): void {
     if (this.currentSession != null) {
-      this.router.navigate(['/tokeninfo', this.currentSession.sessionId]);
       this.adminService.startSession(this.currentSession.sessionId).subscribe(response => {
         if (response.status === 'SUCCESS') {
           this.router.navigate(['/tokeninfo', this.currentSession.sessionId]);
