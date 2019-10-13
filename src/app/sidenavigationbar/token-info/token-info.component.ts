@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AdminService} from '../admin.service';
-import {Token} from '@angular/compiler';
 import {TokenInfo} from '../models/TokenInfo';
 
 @Component({
@@ -19,21 +18,21 @@ export class TokenInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tokenInfo = {tokenNumber: 15, userName: 'Kalpesh', bookingId: '12'};
-    /*this.route.paramMap.subscribe(pathvar => {
+    this.route.paramMap.subscribe(pathvar => {
       this.sessionId = pathvar.get('sessionId');
 
       this.nextToken();
-    });*/
+    });
   }
 
   nextToken() {
-   /* this.adminService.nextToken(this.sessionId).subscribe(response => {
+    this.adminService.nextToken(this.sessionId).subscribe(response => {
+      console.log(response);
       if (response.status === 'SUCCESS') {
         this.tokenInfo = response.message;
       } else {
         console.log(response);
       }
-    });*/
+    });
   }
 }

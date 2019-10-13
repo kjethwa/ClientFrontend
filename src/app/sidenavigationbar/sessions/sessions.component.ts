@@ -3,6 +3,7 @@ import {AdminService} from '../admin.service';
 import {AdminSessionSummary} from '../models/AdminSessionSummary';
 import {MatSnackBar} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AppConstant} from '../../AppConstant';
 
 @Component({
   selector: 'app-session',
@@ -21,7 +22,7 @@ export class SessionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const clientId = 1;
+    const clientId = AppConstant.clientId;
     this.adminService.getSessions(clientId).subscribe(response => {
       if (response.status === 'SUCCESS') {
         this.availableSession.push(...response.message);
@@ -59,7 +60,7 @@ export class SessionsComponent implements OnInit {
   public startSession(): void {
     if (this.currentSession != null) {
       this.router.navigate(['/tokeninfo', this.currentSession.sessionId]);
-      /*this.adminService.startSession(this.currentSession.sessionId).subscribe(response => {
+      this.adminService.startSession(this.currentSession.sessionId).subscribe(response => {
         if (response.status === 'SUCCESS') {
           this.router.navigate(['/tokeninfo', this.currentSession.sessionId]);
         } else {
@@ -67,7 +68,7 @@ export class SessionsComponent implements OnInit {
             duration: 2000,
           });
         }
-      });*/
+      });
     }
   }
 }

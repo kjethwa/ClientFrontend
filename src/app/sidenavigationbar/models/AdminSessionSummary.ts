@@ -4,6 +4,7 @@ export class AdminSessionSummary {
   availableTokens: string;
   bookedTokens: string;
   submittedTokens: string;
+  completedTokens: string;
   sessionId: string;
   fromTime: string;
   toTime: string;
