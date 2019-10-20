@@ -4,7 +4,7 @@ import {AppConstant} from '../AppConstant';
 import {ResponseStatus} from './models/ResponseStatus';
 
 @Injectable({
-  providedIn: 'root'  // <- ADD THIS
+  providedIn: 'root'
 })
 export class AdminService {
   serverURL = AppConstant.serverURL;
@@ -27,4 +27,8 @@ export class AdminService {
     return this.http.get<ResponseStatus>(url);
   }
 
+  getActiveSession(clientId) {
+    const url = this.serverURL + '/admin/activesession/' + clientId;
+    return this.http.get<ResponseStatus>(url);
+  }
 }

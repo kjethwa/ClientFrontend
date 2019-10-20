@@ -1,4 +1,4 @@
-<div *ngIf="size > 0" class="align-component">
+<div *ngIf="currentSession" class="align-component">
   <mat-card>
     <mat-card-header>
       <mat-card-title>{{currentSession?.clientName}}</mat-card-title>
@@ -45,13 +45,13 @@
       </mat-grid-list>
     </mat-card-content>
     <mat-card-actions align="center">
-      <button mat-raised-button color="accent" (click)="previousSession()">previous</button>
-      <button mat-raised-button color="primary" (click)="startSession()"  >Start</button>
-      <button mat-raised-button color="accent" (click)="nextSession()">next</button>
+      <button mat-raised-button color="primary" >Continue</button>
+      <button mat-raised-button color="accent" >Complete</button>
+      <button mat-raised-button color="warn" >Cancel</button>
     </mat-card-actions>
   </mat-card>
 </div>
 
-<div *ngIf="size === 0">
-  <p> No Sessions found</p>
+<div *ngIf="!currentSession">
+  <p>{{this.errorMessage}}</p>
 </div>
