@@ -1,4 +1,4 @@
-<div class="align-component">
+<div *ngIf="size > 0" class="align-component">
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>{{currentSession?.clientName}}</mat-card-title>
@@ -50,4 +50,8 @@
       <button mat-raised-button color="accent" (click)="nextSession()">next</button>
     </mat-card-actions>
   </mat-card>
+</div>
+
+<div *ngIf="size === 0">
+  <p> No Sessions found</p>
 </div>

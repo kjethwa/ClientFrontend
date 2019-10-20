@@ -4,6 +4,7 @@
   width: 90%;
   max-width: 90%;
   text-align: center;
+  border-color: black;
 }
 
 .circle {
@@ -15,4 +16,5 @@
   line-height: 150px;
   text-align: center;
   background: midnightblue;
+  display: inline-block;
 }
