@@ -24,15 +24,17 @@ export class SessionsComponent implements OnInit {
   ngOnInit() {
     const clientId = AppConstant.clientId;
     this.adminService.getSessions(clientId).subscribe(response => {
+      console.log(response);
       if (response.status === 'SUCCESS') {
         this.availableSession.push(...response.message);
         this.currentIndex = 0;
         this.size = this.availableSession.length;
+        if (this.size === 0) {
+          this.displayBar('No sessions found', 'ERROR');
+        }
         this.currentSession = this.availableSession[this.currentIndex];
       } else {
-        this.snackBar.open(response.message, 'ERROR', {
-          duration: 2000,
-        });
+        this.displayBar(response.message, 'ERROR');
       }
     });
   }
@@ -41,9 +43,7 @@ export class SessionsComponent implements OnInit {
     if (this.currentIndex < this.size - 1) {
       this.currentSession = this.availableSession[++this.currentIndex];
     } else {
-      this.snackBar.open('Session not found', 'INFO', {
-        duration: 2000,
-      });
+      this.displayBar('Session not found', 'INFO');
     }
   }
 
@@ -51,9 +51,7 @@ export class SessionsComponent implements OnInit {
     if (this.currentIndex > 0) {
       this.currentSession = this.availableSession[--this.currentIndex];
     } else {
-      this.snackBar.open('Session not found', 'INFO', {
-        duration: 2000,
-      });
+      this.displayBar('Session not found', 'INFO');
     }
   }
 
@@ -63,11 +61,15 @@ export class SessionsComponent implements OnInit {
         if (response.status === 'SUCCESS') {
           this.router.navigate(['/tokeninfo', this.currentSession.sessionId]);
         } else {
-          this.snackBar.open(response.message, 'ERROR', {
-            duration: 2000,
-          });
+          this.displayBar(response.message, 'ERROR');
         }
       });
     }
+  }
+
+  private displayBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }
