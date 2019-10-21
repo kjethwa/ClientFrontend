@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {AdminService} from '../admin.service';
 import {TokenInfo} from '../models/TokenInfo';
 import {MatSnackBar} from '@angular/material';
+import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-token-info',
@@ -22,7 +24,19 @@ export class TokenInfoComponent implements OnInit {
     this.route.paramMap.subscribe(pathvar => {
       this.sessionId = pathvar.get('sessionId');
 
-      this.nextToken();
+      this.adminService.lastToken(this.sessionId).subscribe(response => {
+        if (response.status === 'SUCCESS') {
+          if (isNullOrUndefined(response.message)) {
+            this.tokenInfo = {tokenNumber: 0, userName: '', bookingId: '', hasMoreTokens: true};
+          } else {
+            this.tokenInfo = response.message;
+          }
+        } else {
+          this.snackBar.open(response.message, 'ERROR', {
+            duration: 2000,
+          });
+        }
+      });
     });
   }
 

@@ -1,8 +1,11 @@
 <div *ngIf="tokenInfo" class="align-component">
   <div class="circle">{{tokenInfo?.tokenNumber}}</div>
 </div>
+<div class="align-component" *ngIf="!tokenInfo?.hasMoreTokens">
+  <p>No more tokens available</p>
+</div>
 <div class="align-component">
-  <button mat-raised-button color="primary" (click)="nextToken()">Start</button>
+  <button mat-raised-button color="primary" (click)="nextToken()" [disabled]="!tokenInfo?.hasMoreTokens">Start</button>
 </div>
 <div *ngIf="!tokenInfo">
   <p>No tokens to display</p>

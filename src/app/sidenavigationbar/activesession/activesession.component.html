@@ -45,8 +45,8 @@
       </mat-grid-list>
     </mat-card-content>
     <mat-card-actions align="center">
-      <button mat-raised-button color="primary" >Continue</button>
-      <button mat-raised-button color="accent" >Complete</button>
+      <button mat-raised-button color="primary" (click)="continueSession()" >Continue</button>
+      <button mat-raised-button color="accent" (click)="completeSession()">Complete</button>
       <button mat-raised-button color="warn" >Cancel</button>
     </mat-card-actions>
   </mat-card>

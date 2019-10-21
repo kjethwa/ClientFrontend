@@ -27,8 +27,18 @@ export class AdminService {
     return this.http.get<ResponseStatus>(url);
   }
 
+  lastToken(sessionId) {
+    const url = this.serverURL + '/admin/lasttoken/' + sessionId;
+    return this.http.get<ResponseStatus>(url);
+  }
+
   getActiveSession(clientId) {
     const url = this.serverURL + '/admin/activesession/' + clientId;
+    return this.http.get<ResponseStatus>(url);
+  }
+
+  completeSession(sessionId) {
+    const url = this.serverURL + '/admin/completesession/' + sessionId;
     return this.http.get<ResponseStatus>(url);
   }
 }
